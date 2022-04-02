@@ -1,0 +1,266 @@
+:root {
+  --primary: #f393fd;
+  --primary-dark: #c578ce;
+  --bg: rgba(119, 133, 134, 0.637);
+  --white: rgba(240, 240, 240);
+  --shadow:.25em .25em .10em rgba(10, 10, 10, .10);
+  --corners: 3%;
+  --text-color: rgba(7, 7, 7, 0.9);
+  --dark: rgba(7, 7, 7, 0.9);
+  --darker: rgb(7,7,7);
+  --gray: rgb(155, 155, 155);
+  --light: rgb(196, 196, 196);
+}
+
+
+body{
+    background-color: var(--bg);
+    font-family: 'Permanent Marker', cursive; /* has to be linked in the html before your style sheet*/
+    font-size: 16pt;
+    color: var(--text-color);
+}
+
+header {
+  margin: 1em auto;
+}
+
+
+main {
+  width: 50%;
+  margin: auto;
+}
+
+img {
+  max-width: 100%; /* will only take up the page, not any farther*/
+}
+
+button{
+  background-color: var(--primary);
+  border-radius: 10%;
+  border: 3px;
+  color: var(--text-color);
+  box-shadow: var(--shadow);
+  text-decoration: wavy;
+  transition: all .2s ease; /* this is amazing, can be specific about traits that change. this one is changing to button:hover's properties*/
+  cursor: pointer;
+  padding: .7em;
+}
+
+button:hover{
+  background-color: var(--primary-dark);
+}
+
+form{
+  margin: 0;
+}
+
+input{
+  background-color: transparent;
+  border: none;
+  border-bottom: solid 2px var(--text-color);
+  outline: none;
+  font-size: 20pt;
+  font-family: 'Permanent Marker', Arial, Helvetica, sans-serif;
+  color: var(--text-color);
+}
+
+.game-container {
+  height: 301px;
+}
+
+.pump {
+  /* background-color: rgba(148, 86, 86, 0.473); */
+   margin-top: 80px; 
+  height: 130px;
+  width: 180px;
+  align-self: flex-end;
+  position: relative; /* things INSIDE THIS CONTAINER that are positioned absolutely will be positioned RELATIVE TO ITS PARENT CONTAINER */
+}
+
+
+
+ .handle {
+  height: 10px;
+  width: 80px;
+  background-color: var(--darker);
+  position: absolute;
+   top: -80;
+   left: 50;
+   display: flex;
+  /* align-items: center; */
+   justify-content: center; 
+   transition: all .05s linear;
+   z-index: 1;
+}
+
+.handle::before {
+  content: "";
+  background-color: var(--darker);
+  width: 10px;
+  height: 80px;
+  left: 40px;
+  display: block; /* have to set this to display it */
+} 
+
+.pump:active .handle {
+  top: -20px;
+
+}
+
+ .pump-box { /* this thing is making everything break TODO */
+  background-color: var(--light);
+  height: 130px;
+  width: 180px; 
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  z-index: 2; /* must be positioned absolutely or fixed to work */
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28;
+  user-select: none;
+} 
+
+.pump-box span {
+  background-color: var(--primary-dark);
+  padding: .5em;
+  border-radius: 10%;
+}
+
+.balloon{  /* Not displaying to the right of the box??? */
+  height: 120px;
+  width: 100px;
+  background-color: blue;
+  border-radius: 50%;
+  transition: .2s ease;
+  display: inline-block;
+  animation: balloon-float 5s ease-in-out infinite;
+  align-self: flex-end;
+  margin: 0 auto;
+  box-shadow: inset -10px -10px 12px rgba(0,0,0,.5);
+  background: linear-gradient(49deg, rgba(242,89,89,1) 0%, rgba(255,0,0,1) 50%, rgba(223,74,74,1) 100%);
+}
+/* hue rotate 130 green 225 blue */
+
+.balloon.green {
+  filter: hue-rotate(130deg);
+}
+
+.balloon.blue {
+  filter: hue-rotate(225deg);
+}
+
+.balloon.purple {
+  filter: hue-rotate(225deg);
+}
+
+.balloon.pink {
+  filter: hue-rotate(325deg);
+}
+
+@keyframes balloon-float {
+  0%, 100% {
+    transform: translateY(-25px) rotate(5deg);
+  }
+  50% {
+    transform: translateY(25px) rotate(-5deg);
+  }
+}
+
+.container {
+  width: 70%;
+  margin: auto;
+}
+
+@media screen and (max-width :700px) {
+  .container {
+    width: 90%;
+  }
+}
+
+.shadow {
+  filter: drop-shadow(var(--shadow));
+}
+
+
+.card{
+  background-color: var(--white);
+  padding: 1em;
+  box-shadow: var( --shadow);
+  border-radius: var(--corners);
+  /* max-width: 70%;  use this control for card width, overrides other width control */
+  margin: auto; /*centers card in page*/
+  
+}
+
+.btn-dark {
+  background-color: var(--gray);
+  border-color: var(--dark);
+}
+
+.btn-dark:hover { /*  only when it's hovered over*/
+  background-color: var(--gray);
+  border-color: var(--dark);
+}
+
+
+.bg-dark {
+  background-color: var(--dark);
+}
+
+.bg-dark-lighten {
+  background-color: var(--gray);
+}
+
+.text-light {
+  color: var(--light);
+}
+
+/* UTILITY CLASSES */
+
+.text-center {
+  text-align: center;
+}
+
+.d-flex {
+  display: flex; /* puts things side by side?? */
+  align-items: center;
+}
+
+.d-flex.space-between{ /* as I understand it this is an and statement */
+  justify-content: space-between; /* display mode must be set to flex to work */
+}
+
+.d-flex.space-around {
+  justify-content: space-around;
+}
+
+.mt-1 {
+  margin-top: .5em;
+}
+
+.mt-2 {
+  margin-top: .75em;
+}
+
+.mt-3 {
+  margin-top: 1em;
+}
+
+.mb-1 {
+  margin-bottom: .5em;
+}
+
+.mb-2 {
+  margin-bottom: .75em;
+}
+
+.mb-3 {
+  margin-bottom: 1em;
+}
+
+.hidden{
+  display: none !important; /* do not use important often or at all*/
+
+}

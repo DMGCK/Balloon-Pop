@@ -1,0 +1,100 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Balloon Pop</title>
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/fontawesome.min.css" integrity="sha384-jLKHWM3JRmfMU0A5x5AkjWkw/EYfGUAGagvnfryNV3F9VqM98XiIH7VBGVoxVSc7" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+
+
+</head>
+
+<header >
+  <div class="shadow container">
+    <img src="balloon-pop-logo.png" alt="Balloon Pop Logo">
+  </div>
+</header>
+
+<section class=" container card"> <!--  whole game and form card  -->
+
+<form class=" d-flex space-between" id="player-form" onsubmit="setPlayer(event)">
+  <div>
+    <label for="Player Name">
+      <i class="fa fa-user-circle" aria-hidden="true"></i>
+      <span>Player Name:</span>
+    </label>
+    <input type="text" name="playerName" required>
+  </div>
+  <button type="submit">Ok</button> <!-- don't know why this one is so far out??? possibly justify rules  -->
+</form>
+
+
+
+
+
+<section id="game" class="game hidden"> 
+
+  <div class=" bg-dark text-light card mt-1">
+    <div class="d-flex space-between">
+
+      <div> <!-- in a flex spot, putting what you want together in a div will help-->
+    <i class="fa fa-user-circle" aria-hidden="true"></i>
+    <span id="player-name"></span>
+    </div>
+    <div>
+      <span>Top Popped</span>
+      <span id="high-score">0</span>
+    </div>
+
+   </div>
+  </div>
+
+  <Div id="main-controls" class=" d-flex space-around mt-1">
+  <button class='btn-dark' onclick="changePlayer()">Change Player</button>
+  <button id="start-button" onclick="startGame()">START GAME</button> 
+  </Div>
+
+  <div id="game-controls" class="hidden">
+  
+  <!-- <button  id="inflate-button" onclick="inflate()">Inflate </span></button> -->
+  
+  <div>
+    <span>Time Remaining</span>
+    <span id="countdown">0</span>
+  </div>
+  
+  <div>
+    <span>Balloons Popped</span>
+    <span id="pop-count">0</span>
+    
+    
+  </div>
+
+  <div class="game-container d-flex">  <!-- .space-between broke the balloon, it wouldn't display inline-->
+    <div onclick="inflate()" class="pump">
+      <div class="handle"></div> <!--- spent a day wondering why this was broken when pump box doesn't need to be INSIDE the handle.-->
+      <div class="pump-box"><span  id="click-count"></span></div>
+    </div>
+    <span id="balloon" class=" balloon"></span>
+    <audio id="pop-sound" src="burst.mp3"></audio>
+  </div>
+
+
+  
+</div>
+  
+</section> <!--   section with game  -->
+</section> <!--  whole card with game and form  -->
+
+
+  <div id="scoreboard" class="container card mt-2">
+    <h3 class="text-center">Scoreboard</h3>
+    <div id="players"></div>
+   </div>
+
+
+<script src="main.js"></script>
+</body>
+</html>
